@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href=" https://welkin-mht.github.io/WEBHomework.github.io/normalize.css">
+    <link rel="stylesheet" href=" https://welkin-mht.github.io/WEBHomework.github.io/font-face.css">
+
+
+    <script>
+        window.onload=function(){
+            document.getElementById("submit").onclick=function(){
+                alert("我们收到了你的反馈，感谢你的参与！")
+            }
+
+        }
+    </script>
+    <style>
+        html{
+            height: 100%;
+        }
+
+        body{
+            height: 100%;
+        }
+        .box{
+            display: inline-block;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 3px;
+            width: 60%;
+            height: 100%;
+            margin: 0 20%;
+        }
+        .font{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="" class="font">
+            你的家乡在哪？
+            <br>
+            <input type="text" name="hometown">
+            <br>
+            <br>
+            性别：
+            <br>
+            <input type="radio" name="sex" value="male">男
+            <br>
+            <input type="radio" name="sex" value="female">女
+            <br>
+            <br>
+            你觉得哪一道杭州特产给你留下了深刻的印象？ 
+            <br>
+            <textarea name="thought" id="" cols="30" rows="1"></textarea>
+            <br>
+            <br>
+            你觉得杭州美食在哪方面更特别？
+            <br>
+            <select name="prefer" id="">
+                <option value=""></option>
+                <option value="色">色</option>
+                <option value="香">香</option>
+                <option value="味">味</option>
+                <option value="其他">其他</option>
+            </select>
+            <br>
+            <br>
+            你还想从哪些方面了解杭州食物？
+            <br>
+            <br>
+            <textarea name="thought" id="" cols="30" rows="5"></textarea>
+            <br>
+            <br>
+            <input type="submit" value="提交" id="submit">   
+    
+        </form>
+    </div>
+</body>
+</html>
