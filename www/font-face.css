@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "隶书";
+    src: url(../www/HanYiXiaoLiShuJian/HanYiXiaoLiShuJian-1.ttf);
+}
+body{
+  font-family: "隶书";  
+}
