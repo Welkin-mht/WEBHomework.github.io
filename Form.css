@@ -1,0 +1,78 @@
+
+        html{
+            height: 100%;
+        }
+        @font-face {
+            font-family: "隶书";
+            src: url("./HanYiXiaoLiShuJian/HanYiXiaoLiShuJian-1.ttf");
+        }
+        body{
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+       
+        }
+        .container{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 500px;
+            height: 550px;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        .leftbox,.rightbox{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+        .leftbox h2,.rightbox h2{
+          
+            font-size: 40px;
+        }
+        .leftbox input,.rightbox input{
+            position: relative;
+            border: none;
+            border-radius: 10px;
+            height: 35px;
+            outline: none;
+        }
+        
+        .rightbox{
+            background-color: white;
+            transform: translateX(100%);
+        }
+        h2{
+            text-align: center;
+        }
+        .form{
+            width: 90%;
+            height: 70%;
+            border: 1px solid black;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .input{
+            position: relative;
+        }
+        .input input{
+            padding: 2px 14px;
+            border: 1px solid black;
+        }
+        .input .tishi{
+            position: absolute;
+            width: 120px;
+            height: 20px;
+            line-height: 20px;
+            top: 42px;
+            left: 2px;
+        }
