@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>美食列表</title>
+
+    <link rel="stylesheet" href="./index.html">
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./List.css">
+
+    <script src="./jquery-3.6.1.js"></script>
+
+</head>
+<body>
+    <ul class="daohanglan">
+        <li class="one"><a href="./index.html">食在杭州</a></li>
+        <li class="one"><a href="./List.html">美食列表</a ></li>
+        <li class="one"><a href="./intro.html">关于本站</a></li>
+        <li class="one"><a href="./Form.html">注册登录</a ></li>
+    </ul>
+
+    <ul id="list">
+
+    </ul>
+
+    <div id="change">
+        <p class="input">您想要添加的菜品名称：</p>
+        <input type="text" id="name" class="input">
+        <br>
+        <p class="pic">图片地址：</p>
+        <input type="text" id="pic" class="pic">
+        <br>
+        <p class="textarea">它的简介：</p>
+        <textarea id="introduce" cols="30" rows="5" class="textarea"></textarea>
+        <br>
+        <p class="select">推荐指数：</p>
+        <select id="star" class="select">
+            <option value="一星">一星</option>
+            <option value="二星">二星</option>
+            <option value="三星">三星</option>
+            <option value="四星">四星</option>
+            <option value="五星">五星</option>
+        </select><br>
+        <p class="res">推荐餐厅：</p>
+        <input type="text" id="res" class="res">
+        <br>
+        <p class="textarea">正文：</p>
+        <textarea id="main" cols="30" rows="5" class="textarea"></textarea>
+        <button id="add" class="button">添加</button>
+    </div>
+    
+    <script>
+        localStorage.setItem("东坡肉",JSON.stringify({
+            foodname:"东坡肉",
+            foodstar:"五星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/37d3d539b6003af388d574eb382ac65c1138b6ca?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U5Mg==,g_7,xp_5,yp_5",
+            foodintro:"东坡肉的主料和造型大同小异，主料都是半肥半瘦的猪肉，加入配料焖制而成，成品菜都是码得整整齐齐的麻将块儿，红得透亮，色如玛瑙，入口软而不烂，肥而不腻。",
+            restaurant:"楼外楼(孤山路店) . 望园饭店(虎跑路店)",
+            main:"",
+        }))
+        localStorage.setItem("西湖藕粉",JSON.stringify({
+            foodname:"西湖藕粉",
+            foodstar:"五星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/29381f30e924b899183f2e4367061d950a7bf64e?x-bce-process=image/resize,m_lfit,w_268,limit_1",
+            foodintro:"西湖藕粉是浙江省杭州市的一种名优特产；其风味独特，富含营养，旧时是为皇家提供“贡粉”。 藕是荷花在地下的茎，经特别加工制成的藕粉，呈薄片状，质地细滑，色泽白中透红。服用时只需先用少量冷水调和，再用开水冲调成糊状即可，冲泡后的藕粉晶莹透明，口味清醇，有生津开胃，养血益气的功效，是极适用于婴孩、老人、病人的滋补品。",
+            restaurant:"佳藕天成(中山中路27号-29号)",
+            main:"",
+        }))
+        localStorage.setItem("龙井虾仁",JSON.stringify({
+            foodname:"龙井虾仁",
+            foodstar:"四星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc750931f44db00baa1cc112a83?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5",
+            foodintro:"龙井虾仁将茶饮与虾仁融合，整体清新软嫩，虾仁玉白，鲜嫩，芽叶清香，色泽雅丽，虾中有茶香，茶中有虾鲜，食后清口开胃，回味无穷。",
+            restaurant:"杭州酒家(延安路店) . 桂满陇(中山公园店)",
+            main:"",
+        }))
+        localStorage.setItem("西湖醋鱼",JSON.stringify({
+            foodname:"西湖醋鱼",
+            foodstar:"四星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/00e93901213fb80e6f3935ac3fd12f2eb83894e4?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U4MA==,g_7,xp_5,yp_5",
+            foodintro:"西湖醋鱼（West Lake Fish in Vinegar Gravy），又名“叔嫂传珍”“宋嫂鱼”，前身为“宋嫂鱼羹”，是中国浙江省杭州市传统风味名菜，为浙江菜系。 西湖醋鱼主以草鱼等食材用料烹制，色泽红亮，肉质鲜嫩，酸甜清香，口感软嫩，带有蟹味。",
+            restaurant:"皇饭儿(高银街总店) . 知味观味庄(杨公堤店)",
+            main:"",
+        }))
+        localStorage.setItem("片儿川",JSON.stringify({
+            foodname:"片儿川",
+            foodstar:"三星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/1b4c510fd9f9d72a6059720d0b603f34349b033b0dc2?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxNTA=,g_7,xp_5,yp_5",
+            foodintro:"片儿川是浙江省杭州市的一道特色名菜，也是杭州奎元馆的名点，其浇头主要由雪菜、笋片、瘦肉片组成，鲜美可口，此菜已有百余年历史，最早由杭州市区老店奎元馆首创，其特色在于倒笃菜和笋片的鲜美，让食客吃后回味无穷。",
+            restaurant:"方老大面(江城路店) . 菊英面馆(中山南路店)",
+            main:"片儿川面是杭州奎元馆老店历史上最具名声的面点之一。2013年7月，杭州市区片儿川荣登 “中国十大名面条”榜单，全城引发一阵香气喷人的“杭儿风”。相传片儿川面，还是奎元馆初创时小面店的看家面，传说是清时某年浙江举行乡试到杭州来赶考的读书人很多，各地考生齐集杭城，店主为招徕这些读书人的生意，就以倒笃菜、笋片、猪肉片烧制成的大众化面专门供应外地书生。在所售之早餐面中添加三只蛋，寓“连中三元”之意。时有一书生因奎元馆面好价廉，常来吃面，后得中乡试举人第一名“解元”，放榜之日，特到店里向店主致谢，因小面店尚没有招牌，就当场题写“奎元馆”三字作为招牌，从此，奎元馆的片儿川面名声大振，食客盈门。凡来杭州应考者，都慕名前来吃面，图个吉利。到上世纪40年代后期，奎元馆已颇有名气，游客中广泛流传着一句口头禅：“到杭州不吃奎元馆的面，等于没有游过杭州。”当时，梅兰芳，盖叫天，周璇、石辉等文艺界知名人士，都是奎元馆的座上客。1945年抗战胜利后，原国民党第19路军军长蔡廷锴将军同李济深先生来到杭州，一起到奎元馆吃黄鱼面，在品尝高兴之时，蔡将军当场挥毫疾书“东南独创”四个大字。奎元馆的片儿川烹调与众不同，先将猪腿肉、笋肉分别切成长方薄片，将倒笃菜切成碎末。将锅放在火上，下猪油烧化后，先下肉片略煸，再投入笋片，加入酱油略煸，最后放碎倒笃菜和适量沸水继续炒匀略煮，即成浇头出锅。在此同时，将面条放入另一沸水锅内煮熟，捞出迅速甩干水分，倒回炒浇头的锅内略煮，加入味精，浇入猪油，起锅，分别盖上浇头即成。面滑汤浓，肉片鲜嫩，笋菜爽口。南宋以来，杭州话（市区）多带“儿”音，如“筷子”则念做“筷儿”，且“儿”音较之现在的北方音更为厚重，又因“氽”与“川”同音，本是菜料皆成“片儿状”，于是 “片儿氽”就叫成了“片儿川”。另有一说法：传说苏东坡在杭州当官的时候说过这样一句话：“无竹令人俗，无肉令人瘦”。倒笃菜、冬笋、肉丝，片儿川选用的这几样配料据说也是有讲究的。将这三样材料切成片，然后在沸水中氽一下，据说这便是“片儿川”名字的由来。",
+        }))
+        localStorage.setItem("叫化童子鸡",JSON.stringify({
+            foodname:"叫化童子鸡",
+            foodstar:"三星",
+            picture:"https://bkimg.cdn.bcebos.com/pic/622762d0f703918fa0ec05b85977319759ee3d6d6e25?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5",
+            foodintro:"叫化童子鸡是浙江省杭州市的一道传统名菜，属于浙菜系-杭州菜；此菜鸡身白净，肉酥离骨，食不嵌齿。相传，古代有一个流落到江南的叫化子，一天由于饥寒交迫而昏倒，难友为他偷来一只小母鸡却又苦于缺锅少灶，就用泥把鸡饲包起来放入火堆中煨烤，剥开食时，竟意外地发现此鸡香气四溢，味道极好。后来这一方法传到酒楼，经厨师的不断改进，在传统制作方法基础上加以改进，选用肥嫩越鸡，以竹箬壳、鲜荷叶包裹，最外层包上酒坛泥，先用猛火，后改文火煨成。现制现吃，清香扑鼻，鲜嫩可口，终成名菜。",
+            restaurant:"楼外楼(孤山路店) . 知味观(湖滨店) . 吴山广场",
+            main:"",
+        }))
+
+    
+        for(let i=0;i<localStorage.length;i++){
+            let key =localStorage.key(i)
+        try{
+            JSON.parse(localStorage.getItem(key))
+        }catch(e){
+            continue
+        }
+      
+     
+        let obj=JSON.parse(localStorage.getItem(key))
+
+      
+      
+        if(obj.foodname.startsWith("#")){
+            var foodname=obj.foodname.substring(1)
+        }
+        else{
+            var foodname=obj.foodname
+        } 
+        let foodstar=obj.foodstar
+        let foodintro=obj.foodintro
+        let picture=obj.picture
+        let restaurant=obj.restaurant
+        let main=obj.main
+
+        if(!obj.foodname.startsWith("#")){
+            let str=`<li class="li"><a href="./detail1.html"><h2>${foodname}</h2></a>
+            <p class="margin10">推荐指数:${foodstar}</p>
+            <p class="intro">${foodintro}</p>
+            <img src=${picture} class="img">
+            <p class="margin10">推荐餐厅:${restaurant}</p>
+            </li>`
+            $("#list").append(str)
+        }
+        else{
+            let str=`<li class="li"><a href="./detail1.html"><h2>${foodname}</h2></a>
+            <p class="margin10">推荐指数:${foodstar}</p>
+            <p class="intro">${foodintro}</p>
+            <img src=${picture} class="img">
+            <p class="margin10">推荐餐厅:${restaurant}</p>
+            <button class="del">del</button></li>`
+
+       
+            $("#list").append(str)
+            $(".del").click(function(){
+                let foodname=$(this).siblings()[0].innerText
+                localStorage.removeItem(foodname)
+                $(this).parent().remove()  
+            })
+
+        }
+    }
+    
+
+    $("#add").click(function(){
+        let foodname=$("#name").val()
+        let foodintro=$("#introduce").val()
+        let picture=$("#pic").val()
+        let restaurant=$("#res").val()
+        let foodstar=$("#star option:selected").val()
+        let main=$("#main").val()
+            let obj={}
+            obj.foodname="#"+foodname
+            obj.picture=picture
+            obj.foodintro=foodintro
+            obj.foodstar=foodstar
+            obj.restaurant=restaurant
+        localStorage.setItem(foodname,JSON.stringify(obj))
+        let str=`<li class="li"><a href="./detail1.html"><h2>${foodname}</h2></a>
+        <p class="margin10">推荐指数:${foodstar}</p>
+        <p class="intro">${foodintro}</p>
+        <img src=${picture} class="img">
+        <p class="margintop">推荐餐厅:${restaurant}</p>
+        <button class="del">del</button></li>`
+      
+        $("#list").append(str)
+
+
+        $(".del").click(function(){
+            let foodname=$(this).siblings()[0].innerText
+            localStorage.removeItem(foodname)
+            $(this).parent().remove()
+        })
+    })
+      </script>
+</body>
+</html>
